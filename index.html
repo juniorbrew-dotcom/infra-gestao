@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Gestão de Infraestrutura</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Bibliotecas externas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Sistema de Gestão de Infraestrutura</h1>
+  </header>
+
+  <main>
+    <!-- Cadastro -->
+    <section id="cadastro">
+      <h2>Cadastro</h2>
+
+      <form id="formCliente">
+        <h3>Cliente</h3>
+        <input type="text" id="nomeCliente" placeholder="Nome do Cliente" required />
+        <input type="email" id="emailCliente" placeholder="E-mail" required />
+        <input type="text" id="telefoneCliente" placeholder="Telefone" required />
+        <input type="text" id="cnpjCliente" placeholder="CNPJ" required />
+        <button type="submit">Salvar Cliente</button>
+      </form>
+
+      <form id="formResponsavel">
+        <h3>Responsável</h3>
+        <input type="text" id="nomeResponsavel" placeholder="Nome do Responsável" required />
+        <input type="email" id="emailResponsavel" placeholder="E-mail" required />
+        <button type="submit">Salvar Responsável</button>
+      </form>
+
+      <form id="formTarefa">
+        <h3>Tipo de Tarefa</h3>
+        <input type="text" id="nomeTarefa" placeholder="Nome da Tarefa" required />
+        <textarea id="checklistTarefa" placeholder="Checklist (separado por vírgulas)" required></textarea>
+        <button type="submit">Salvar Tipo de Tarefa</button>
+      </form>
+    </section>
+
+    <!-- Agenda -->
+    <section id="agenda">
+      <h2>Agenda de Tarefas</h2>
+
+      <form id="formAgenda">
+        <select id="clienteSelect"></select>
+        <select id="responsavelSelect"></select>
+        <select id="tarefaSelect"></select>
+        <input type="date" id="dataTarefa" required />
+        <select id="statusTarefa">
+          <option value="pendente">Pendente</option>
+          <option value="em andamento">Em andamento</option>
+          <option value="concluída">Concluída</option>
+        </select>
+        <button type="submit">Agendar Tarefa</button>
+      </form>
+
+      <div id="filtros">
+        <input type="text" id="filtroCliente" placeholder="Filtrar por cliente" />
+        <input type="text" id="filtroStatus" placeholder="Filtrar por status" />
+        <button id="btnExportarPDF">Exportar PDF</button>
+      </div>
+
+      <table id="tabelaTarefas">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Responsável</th>
+            <th>Tarefa</th>
+            <th>Data</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard">
+      <h2>Dashboard</h2>
+      <canvas id="graficoTarefas" width="400" height="200"></canvas>
+      <canvas id="graficoClientes" width="400" height="200"></canvas>
+      <canvas id="graficoDatas" width="400" height="200"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Sistema de Gestão de Infraestrutura</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

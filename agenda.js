@@ -1,4 +1,5 @@
 import { gerarPDF } from './utils.js';
+import { atualizarKPIs } from './dashboard.js';
 
 export function salvarAgenda(event) {
   event.preventDefault();
@@ -27,6 +28,7 @@ export function salvarAgenda(event) {
 
   document.getElementById("formAgenda").reset();
   carregarAgenda();
+  atualizarKPIs();
 }
 
 export function carregarAgenda() {
@@ -59,6 +61,7 @@ export function excluirTarefa(index) {
   agenda.splice(index, 1);
   localStorage.setItem("agendaTarefas", JSON.stringify(agenda));
   carregarAgenda();
+  atualizarKPIs();
 }
 
 export function aplicarFiltros() {

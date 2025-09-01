@@ -6,6 +6,11 @@ export function salvarResponsavel(event) {
   const nome = document.getElementById("nomeResponsavel").value.trim();
   const email = document.getElementById("emailResponsavel").value.trim();
 
+  if (!nome || !email) {
+    alert("Preencha todos os campos do responsável.");
+    return;
+  }
+
   if (!validarEmail(email)) {
     alert("E-mail inválido.");
     return;

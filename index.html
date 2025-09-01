@@ -103,6 +103,194 @@
         <section id="dashboard">
           <h2>Dashboard</h2>
           <div class="dashboard-cards">
+            /* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #f9fafc;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* Layout principal */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background-color: #1f2937;
+  color: white;
+  padding: 30px 20px;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar nav ul li a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+  color: #ffffff;
+}
+
+/* Conteúdo principal */
+.main-content {
+  flex: 1;
+  padding: 30px;
+}
+
+/* Topbar */
+.topbar {
+  background-color: #ffffff;
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 30px;
+  border-radius: 8px;
+}
+
+.topbar h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Seções */
+section {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+
+h2, h3 {
+  color: #1f2937;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Formulários */
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+form textarea {
+  grid-column: span 2;
+}
+
+input, textarea, select, button {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+/* Filtros */
+#filtros {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+table th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9fafc;
+}
+
+table td button {
+  background-color: #ef4444;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: white;
+  border: none;
+}
+
+table td button:hover {
+  background-color: #dc2626;
+}
+
+/* Dashboard */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+canvas {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
             <canvas id="graficoTarefas"></canvas>
             <canvas id="graficoClientes"></canvas>
             <canvas id="graficoDatas"></canvas>

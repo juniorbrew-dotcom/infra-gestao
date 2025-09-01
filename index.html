@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sistema de Gestão de Infraestrutura</title>
+  <title>InfraGestão</title>
   <link rel="stylesheet" href="css/style.css" />
 
   <!-- Bibliotecas externas -->
@@ -13,89 +13,108 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Sistema de Gestão de Infraestrutura</h1>
-  </header>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>InfraGestão</h2>
+      <nav>
+        <ul>
+          <li><a href="#cadastro">Cadastro</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-  <main>
-    <!-- Cadastro -->
-    <section id="cadastro">
-      <h2>Cadastro</h2>
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+      <header class="topbar">
+        <h1>Sistema de Gestão de Infraestrutura</h1>
+      </header>
 
-      <form id="formCliente">
-        <h3>Cliente</h3>
-        <input type="text" id="nomeCliente" placeholder="Nome do Cliente" required />
-        <input type="email" id="emailCliente" placeholder="E-mail" required />
-        <input type="text" id="telefoneCliente" placeholder="Telefone" required />
-        <input type="text" id="cnpjCliente" placeholder="CNPJ" required />
-        <button type="submit">Salvar Cliente</button>
-      </form>
+      <main>
+        <!-- Cadastro -->
+        <section id="cadastro">
+          <h2>Cadastro</h2>
 
-      <form id="formResponsavel">
-        <h3>Responsável</h3>
-        <input type="text" id="nomeResponsavel" placeholder="Nome do Responsável" required />
-        <input type="email" id="emailResponsavel" placeholder="E-mail" required />
-        <button type="submit">Salvar Responsável</button>
-      </form>
+          <form id="formCliente">
+            <h3>Cliente</h3>
+            <input type="text" id="nomeCliente" placeholder="Nome do Cliente" required />
+            <input type="email" id="emailCliente" placeholder="E-mail" required />
+            <input type="text" id="telefoneCliente" placeholder="Telefone" required />
+            <input type="text" id="cnpjCliente" placeholder="CNPJ" required />
+            <button type="submit">Salvar Cliente</button>
+          </form>
 
-      <form id="formTarefa">
-        <h3>Tipo de Tarefa</h3>
-        <input type="text" id="nomeTarefa" placeholder="Nome da Tarefa" required />
-        <textarea id="checklistTarefa" placeholder="Checklist (separado por vírgulas)" required></textarea>
-        <button type="submit">Salvar Tipo de Tarefa</button>
-      </form>
-    </section>
+          <form id="formResponsavel">
+            <h3>Responsável</h3>
+            <input type="text" id="nomeResponsavel" placeholder="Nome do Responsável" required />
+            <input type="email" id="emailResponsavel" placeholder="E-mail" required />
+            <button type="submit">Salvar Responsável</button>
+          </form>
 
-    <!-- Agenda -->
-    <section id="agenda">
-      <h2>Agenda de Tarefas</h2>
+          <form id="formTarefa">
+            <h3>Tipo de Tarefa</h3>
+            <input type="text" id="nomeTarefa" placeholder="Nome da Tarefa" required />
+            <textarea id="checklistTarefa" placeholder="Checklist (separado por vírgulas)" required></textarea>
+            <button type="submit">Salvar Tipo de Tarefa</button>
+          </form>
+        </section>
 
-      <form id="formAgenda">
-        <select id="clienteSelect"></select>
-        <select id="responsavelSelect"></select>
-        <select id="tarefaSelect"></select>
-        <input type="date" id="dataTarefa" required />
-        <select id="statusTarefa">
-          <option value="pendente">Pendente</option>
-          <option value="em andamento">Em andamento</option>
-          <option value="concluída">Concluída</option>
-        </select>
-        <button type="submit">Agendar Tarefa</button>
-      </form>
+        <!-- Agenda -->
+        <section id="agenda">
+          <h2>Agenda de Tarefas</h2>
 
-      <div id="filtros">
-        <input type="text" id="filtroCliente" placeholder="Filtrar por cliente" />
-        <input type="text" id="filtroStatus" placeholder="Filtrar por status" />
-        <button id="btnExportarPDF">Exportar PDF</button>
-      </div>
+          <form id="formAgenda">
+            <select id="clienteSelect"></select>
+            <select id="responsavelSelect"></select>
+            <select id="tarefaSelect"></select>
+            <input type="date" id="dataTarefa" required />
+            <select id="statusTarefa">
+              <option value="pendente">Pendente</option>
+              <option value="em andamento">Em andamento</option>
+              <option value="concluída">Concluída</option>
+            </select>
+            <button type="submit">Agendar Tarefa</button>
+          </form>
 
-      <table id="tabelaTarefas">
-        <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Responsável</th>
-            <th>Tarefa</th>
-            <th>Data</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
+          <div id="filtros">
+            <input type="text" id="filtroCliente" placeholder="Filtrar por cliente" />
+            <input type="text" id="filtroStatus" placeholder="Filtrar por status" />
+            <button id="btnExportarPDF">Exportar PDF</button>
+          </div>
 
-    <!-- Dashboard -->
-    <section id="dashboard">
-      <h2>Dashboard</h2>
-      <canvas id="graficoTarefas" width="400" height="200"></canvas>
-      <canvas id="graficoClientes" width="400" height="200"></canvas>
-      <canvas id="graficoDatas" width="400" height="200"></canvas>
-    </section>
-  </main>
+          <table id="tabelaTarefas">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Responsável</th>
+                <th>Tarefa</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 - Sistema de Gestão de Infraestrutura</p>
-  </footer>
+        <!-- Dashboard -->
+        <section id="dashboard">
+          <h2>Dashboard</h2>
+          <div class="dashboard-cards">
+            <canvas id="graficoTarefas"></canvas>
+            <canvas id="graficoClientes"></canvas>
+            <canvas id="graficoDatas"></canvas>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 - InfraGestão</p>
+      </footer>
+    </div>
+  </div>
 
   <script type="module" src="js/main.js"></script>
 </body>

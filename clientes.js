@@ -8,6 +8,11 @@ export function salvarCliente(event) {
   const telefone = document.getElementById("telefoneCliente").value.trim();
   const cnpj = document.getElementById("cnpjCliente").value.trim();
 
+  if (!nome || !email || !telefone || !cnpj) {
+    alert("Preencha todos os campos do cliente.");
+    return;
+  }
+
   if (!validarEmail(email)) {
     alert("E-mail inválido.");
     return;

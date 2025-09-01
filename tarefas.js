@@ -5,11 +5,14 @@ export function salvarTipoTarefa(event) {
   const checklistTexto = document.getElementById("checklistTarefa").value.trim();
 
   if (!nome || !checklistTexto) {
-    alert("Preencha todos os campos.");
+    alert("Preencha todos os campos da tarefa.");
     return;
   }
 
-  const checklist = checklistTexto.split(",").map(item => item.trim()).filter(item => item !== "");
+  const checklist = checklistTexto
+    .split(",")
+    .map(item => item.trim())
+    .filter(item => item !== "");
 
   const tipoTarefa = { nome, checklist };
   const tipos = JSON.parse(localStorage.getItem("tiposTarefa") || "[]");

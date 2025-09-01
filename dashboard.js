@@ -24,4 +24,18 @@ export function gerarGraficoTarefas() {
       }
     }
   });
+
+}
+export function atualizarKPIs() {
+  const tarefas = JSON.parse(localStorage.getItem("agendaTarefas") || "[]");
+  const clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
+
+  const total = tarefas.length;
+  const pendentes = tarefas.filter(t => t.status === "pendente").length;
+  const concluidas = tarefas.filter(t => t.status === "concluída").length;
+
+  document.getElementById("kpiTotal").textContent = `Total de Tarefas: ${total}`;
+  document.getElementById("kpiPendentes").textContent = `Pendentes: ${pendentes}`;
+  document.getElementById("kpiConcluidas").textContent = `Concluídas: ${concluidas}`;
+  document.getElementById("kpiClientes").textContent = `Clientes: ${clientes.length}`;
 }
